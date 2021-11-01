@@ -1,0 +1,501 @@
+\documentclass[8pt,a4paper]{article}
+\usepackage{amsfonts}
+\usepackage[none]{hyphenat} % PER NON FAR ANDARE A CAPO LE PAROLE CON IL TRATTINO
+\usepackage[nottoc,notlot,notlof]{tocbibind} % boh
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{centernot} % serve per il 'A NON implica B' nel comando \centernot
+\usepackage{wrapfig}
+\pdfsuppresswarningpagegroup=1
+
+
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+
+
+% FIGURE MATHCHA.IO
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{caption}\captionsetup{belowskip=12pt,aboveskip=4pt}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usepackage{placeins} % The placeins package gives the command \FloatBarrier, which will make sure any floats will be put in before this point
+\usepackage{flafter}  % The flafter package ensures that floats don't appear until after they appear in the code.
+
+
+
+% PER INCLUDERE FIGURE
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+% QUESTO NUOVO COMANDO SERVE PER INCLDERE LE FIGURE FATTE IN INKSCAPE, CHE SI DEVONO TROVARE NELLA STESSA DIRECTORY DENTRO LA CARTELLA figures
+\newcommand{\incfig}[2][1]{%
+	\def\svgwidth{#1\columnwidth}
+	\import{./figures/}{#2.pdf_tex}
+}
+
+
+
+% RISCRITTURA DI COMANDI
+%\renewcommand{\epsilon}{\varepsilon} % NON USATO
+%\renewcommand{\theta}{\vartheta} % NON USATO
+%\renewcommand{\rho}{\varrho}
+%\renewcommand{\phi}{\varphi} % NON USATO
+\renewcommand{\degree}{^\circ\text{C}} % SIMBOLO GRADI
+\newcommand{\notimplies}{\mathrel{{\ooalign{\hidewidth$\not\phantom{=}$\hidewidth\cr$\implies$}}}}
+
+\usepackage{mathtools} % SERVE PER I DUE COMANDI DOPO
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert} % CREA UN COMANDO abs()
+\DeclarePairedDelimiter{\norma}{\lVert}{\rVert} % CREA UN COMANDO norma()
+
+
+
+% INDICE
+\setcounter{secnumdepth}{3} % DI DEFAULT LE SUBSUBSECTION NON SONO NUMERATE, COSÌ SÌ
+\setcounter{tocdepth}{1} % FISSA LA PROFONDITÀ DELLE COSE MOSTRATE NELL'INDICE
+\usepackage{tocstyle}
+\usetocstyle{standard}
+\usepackage[hidelinks]{hyperref} % RENDE L'INDICE INTERATTIVO E hidelinks NASCONDE IL BORDO ROSSO DAI RIFERIMENTI
+
+
+% APPENDICI
+\usepackage[toc,page]{appendix}
+\newcommand{\nocontentsline}[3]{} % QUESTO COMANDO E QUELLO DOPO SERVONO PER AVERE IL COMANDO \tocless DA METTERE PRIMA DI UNA SEZIONE CHE NON VOGLIO FAR APPARIRE NELL'INDICE
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+
+
+% FONT
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{latexsym}
+\usepackage{textcomp}
+\usepackage{siunitx}
+
+
+
+% SCRITTA LaTeX
+\newcommand{\latex}{\LaTeX\xspace}
+\newcommand{\tex}{\TeX\xspace}
+
+
+
+% PARAGRAFI, INTERLINEA E MARGINE
+\emergencystretch 3em % PER EVITARE CHE IL TESTO VADA OLTRE I MARGINI
+\parindent 0ex % TOGLIE INTENDAMENTO PARAGRAFI
+% \setlength{\parindent}{4em} % CAMBIA INDENTAMENTO PARAGRAFI
+\setlength{\parskip}{0.2em} % CAMBIA SPAZIO TRA PARAGRAFI (POSSO METTERE ANCHE 1em)
+% \renewcommand{\baselinestretch}{1.5} % CAMBIA INTERLINEA
+\usepackage[margin=0.5in]{geometry} % CAMBIA MARGINE DEL DOCUMENTO
+
+
+
+% HEADER
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{} % PULISCI HEADER
+\fancyfoot{} % PULISCI FOOTER
+
+% TOGLI I PROSISMI DUE COMMENTI PER CAMBIARE DA 'Capitolo X. Blabla' A 'X. Blabla'
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[RE]{\nouppercase{\leftmark}} %\fancyhead[RE]{\thechapter.  \leftmark}
+\fancyhead[LO]{\nouppercase{\rightmark}}
+\fancyhead[LE,RO]{\thepage}
+
+%\fancyhead[L]{\slshape \MakeUppercase{FISICA SPERIMENTALE 2}}
+%\fancyhead[R]{\slshape A cura di Teo Bucci e Giulia Di Giusto}
+%\fancyfoot[C]{\thepage}
+%\renewcommand{\headrulewidth}{0pt} % CANCELLA LINEA ORIZZONTALE HEAD
+
+
+
+% CENTRARE VERTICALMENTE IL TITOLO DELLA PAGINA PRINCIPALE
+\usepackage{titling}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+
+
+% BOX DI VARIO TIPO
+
+% TEOREMA TIPO 1
+\usepackage{mdframed}
+\newmdtheoremenv{mdtheo}{Teorema}
+
+% BOX DEFINIZIONI/FORMULE IMPORANTI/TEOREMA TIPO 2
+\usepackage{tcolorbox}
+\usepackage{blindtext}
+\usepackage{tikz,tkz-tab,amsmath}
+\tcbuselibrary{theorems}
+
+% FORMULE
+%\newtcolorbox{formula}{
+%	colback=red!5!white,
+%	colframe=red!75!black
+%	}
+\newtcolorbox{formula}{
+	colback=black!5!white,
+	colframe=black
+	}
+
+% TEOREMA TIPO 2
+\newtcbtheorem
+	[number within=section]
+	{theo}
+	{Teorema}
+	{
+		colback=green!5,
+		colframe=green!35!black,
+		fonttitle=\bfseries,
+		separator sign none % toglie i :
+	}
+	{th}
+
+% DEFINIZIONI
+\newtcbtheorem
+	[number within=section] % init options
+	{definition} % nome da scrivere in LaTeX
+	{Definizione}% Titolo che verrà visualizzazione
+	{
+		colback=blue!5,
+		colframe=blue!45!black,
+		fonttitle=\bfseries,
+	} % options
+	{def} % PREFISSO/LABEL PER LE REF
+
+
+\allowdisplaybreaks
+% CHECKLIST
+%% perchèé èé ' "
+% $1$ $ 1$ $1 $ $ 1 $
+%% pedici fin, in con \text{} tot int a Sigma sup lat
+%% \[ \]
+%% spazio prima di ,:;
+%% spazio equation spazio
+%$$ spazio section spazio
+%% spazio a inizio riga
+%% spazio a fine riga
+%% spazio }
+%% itemize
+%%_{}^{} togliere graffe se possibile
+%% spazio prima di |
+%% i-esima $i$-esima
+%% \vec{ spazio}
+%%^\circ\text{C} gradi \degree o^o
+%% minuscole dopo il .
+%% Terra/terra
+%% ne né nè
+% n,. ?????
+%% . dopo paragraph
+%% f.e.m.
+%% finora, NON fin ora, NON fin'ora
+
+\numberwithin{equation}{subsection}
+\counterwithout{equation}{section}
+\pagestyle{empty}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% INFORMAZIONI PER LA PAGINA INIZIALE
+%\title{Fisica Sperimentale 2}
+%\author{Teo Bucci, Giulia Di Giusto}
+%\date{\today}
+
+% PAGINA INIZIALE
+%\begin{titlingpage} % PER AVERLO CENTRATO
+%	\maketitle
+%	\thispagestyle{empty} % TOGLI STILE HEADER E FOOTER
+%	\clearpage % PASSA ALLA PAGINA DOPO
+%\end{titlingpage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{multicols}{2}
+
+
+
+
+\section*{Campo Elettrico}
+
+Legge di Coulomb $\vec{F}_{21} =k\frac{q_{1} q_{2}}{r^{2}}\vec{u}_{r}$
+
+Campo elettrico $\vec{E} (P)=\sum _{i}\frac{Q\vec{r}_{i}}{4\pi \varepsilon _{0} r^{3}_{i}}$
+
+Campo elettrico di un filo rettilineo infinito $\vec{E} =\frac{\lambda }{2\pi \varepsilon _{0} a}\vec{u}_{n}$
+
+Componenti del potenziale $\frac{dx}{V_{x}} =\frac{dy}{V_{y}} =\frac{dz}{V_{z}}$
+
+Teorema di Gauss $\Phi _{\Sigma } (\vec{E} )=\frac{Q^{\text{interna a} \Sigma }_{\text{tot}}}{\varepsilon _{0}}$
+
+I Equazione di Maxwell (anche in regime tempovariante) $\text{div}\vec{E} =\vec{\nabla } \cdot \vec{E} =\frac{\rho (x,y,z)}{\varepsilon _{0}}$
+
+Divergenza di un campo $\text{div}\vec{v} =\frac{\partial v_{x}}{\partial x} +\frac{\partial v_{y}}{\partial y} +\frac{\partial v_{z}}{\partial z}$
+
+Energia potenziale elettrostatica $U_{\text{elettrostatica}} =\frac{Qq}{4\pi \varepsilon _{0} r}$
+
+Potenziale elettrostatico $V(P)=\frac{U(P)}{q} =\frac{Q}{4\pi \varepsilon _{0} r}$
+
+Conservatività del campo elettrico $\int ^{B}_{A}\vec{E} \cdot d\vec{l} =V(A)-V(B)$
+
+Lavoro delle forze di Coulomb $\mathcal{L} =-q\Delta V$
+
+Energia elettrostatica $U_{e} =\frac{1}{2}\sum _{i\neq j}\frac{q_{i} q_{j}}{4\pi \varepsilon _{0} r_{ij}}$
+
+Campo elettrico come gradiente del potenziale \\$-dV=\vec{E} \cdot d\vec{l} \Rightarrow \vec{E} =-\text{grad} V=-\vec{\nabla } V$
+
+II Equazione di Maxwell (solo in regime stazionario) $\text{rot}\vec{E} =0$
+
+Equazione di Poisson $\nabla ^{2} V=\frac{\partial ^{2} V}{\partial x^{2}} +\frac{\partial ^{2} V}{\partial y^{2}} +\frac{\partial ^{2} V}{\partial z^{2}} =-\frac{\rho (x,y,z)}{\varepsilon _{0}}$
+
+Condizioni al contorno di $\vec{E}$: $E_{t1} =E_{t2} ,\ \ E_{n1} -E_{n2} =\frac{\sigma }{\varepsilon _{0}}$
+
+Momento di dipolo $\vec{p} =q\ \vec{d}$
+
+Potenziale di dipolo a grandi distanze $V(P)=\frac{\vec{p} \cdot \vec{u}_{r}}{4\pi \varepsilon _{0} r^{2}}$
+
+Interazione fra un dipolo e un campo elettrico
+\begin{itemize}
+\item Campo elettrico uniforme $\vec{R} =0,\vec{M} =\vec{p} \times \vec{E}$
+\item Campo elettrico non uniforme $\vec{R} =(\vec{p} \cdot \vec{\nabla }) E_{x}\vec{u}_{x} +(\vec{p} \cdot \vec{\nabla }) E_{y}\vec{u}_{y} +(\vec{p} \cdot \vec{\nabla }) E_{z}\vec{u}_{z} =(\vec{p} \cdot \vec{\nabla })\vec{E}$
+\end{itemize}
+
+Energia elettrostatica di un dipolo immerso in un campo elettrico: \\$\vec{R} =\vec{\nabla } (\vec{p} \cdot \vec{E} )$ per campi conservativi, \\$\vec{R} =(\vec{p} \cdot \vec{\nabla } )\vec{E}$ per tutti i campi.
+
+Teorema di Coulomb $\vec{E}_{1} =\frac{\sigma }{\varepsilon _{0}}\vec{n}$
+
+Potere delle punte $\frac{\sigma _{1}}{\sigma _{2}} =\frac{R_{2}}{R_{1}}$
+
+Capacità del conduttore $\frac{Q}{V_{0}} =C$
+
+Capacità del condensatore $C=\frac{Q}{\Delta V}$. Se piano $C=\frac{Q}{\Delta V} =\frac{Q}{\frac{Qd}{\varepsilon _{0} A}} =\frac{\varepsilon _{0} A}{d}$
+\begin{itemize}
+\item Condensatori in parallelo \\$C_{eq} =\frac{Q_{\text{tot}}}{\Delta V} =\frac{\Delta V\sum ^{n}_{i=1} C_{i}}{\Delta V} =\sum ^{n}_{i=1} C_{i}$
+\item Condensatore in serie \\$\frac{1}{C_{eq}} =\sum ^{n}_{i=1}\frac{1}{C_{i}}$
+\end{itemize}
+
+Energia elettrostatica di un condensatore carico $U_{e} =\frac{1}{2} Q\Delta V=\frac{1}{2} C\Delta V^{2} =\frac{1}{2}\frac{Q^{2}}{C}$
+
+Legge di Felici $Q(t)=\frac{1}{\mathrm{R}} [\Phi (0)-\Phi (t)]$
+
+Densità di energia elettrostatica \\$U_{e} =\int _{\text{tutto lo spazio}}\frac{1}{2} \varepsilon _{0} E^{2} d\tau $, $u_{e} =\frac{1}{2} \varepsilon _{0} E^{2}$
+
+Forza tra le armature di un condensatore: pressione elettrostatica
+\begin{itemize}
+\item Carica costante $\vec{F} =-\vec{\nabla } U_{e}$
+
+Pressione elettrostatica $p_{e} =\frac{\sigma ^{2}}{2\varepsilon _{0}}$
+\item Potenziale costante $\vec{F} =+\vec{\nabla } U_{e}$
+\end{itemize}
+
+Costante dielettrica relativa $\varepsilon _{r} =\frac{C_{d}}{C_{0}}$
+
+Suscettività elettrica $\chi =\varepsilon _{r} -1$
+
+Densità di carica di polarizzazione $\sigma _{p} =\vec{P} \cdot \vec{n}$, $\rho _{p} =-\text{div}\vec{P}$
+
+Equazioni generali dell'elettrostatica $\vec{P} =\varepsilon _{0} (\varepsilon _{r} -1)\vec{E}_{d} =\varepsilon _{0} \chi \vec{E}_{d}$, $\vec{D} =\varepsilon _{0}\vec{E} +\vec{P} =\varepsilon _{0} \varepsilon _{r}\vec{E} =\varepsilon \vec{E}$
+
+Teorema di Gauss per $D$ $\Phi _{\Sigma } (\vec{D} )=Q^{\text{int. a} \Sigma }_{\text{libere}}$
+
+I Equazione di Maxwell in presenza di dielettrici $\vec{\nabla } \cdot \vec{E} =\frac{\rho _{l}}{\varepsilon _{0} \varepsilon _{r}} =\frac{\rho _{l}}{\varepsilon }$
+
+Discontinuità dei campi sulla superficie di separazione tra due dielettrici $D_{n1} -D_{n2} =\sigma _{l}$, $E_{n1} -E_{n2} =\frac{\sigma _{l} +\sigma _{2} -\sigma _{1}}{\varepsilon _{0}}$
+
+Energia elettrostatica nei dielettrici \\$U_{e} =\frac{1}{2}\int _{\text{tutto lo spazio}}\vec{D} \cdot \vec{E} \ d\tau $, $u_{e} =\frac{1}{2}\vec{D} \cdot \vec{E}$
+\section*{Corrente elettrica nei conduttori}
+
+Intensità di corrente elettrica $dI=\frac{dQ}{dt} =nq\vec{v}_{d} \cdot \vec{n} \ dS$
+
+Densità di corrente elettrica \\$\vec{J} =nq\vec{v}_{d} \Longrightarrow dI=\vec{J} \cdot \vec{n} \ dS=d\Phi (\vec{J} )\Rightarrow I=\Phi (\vec{J} )$
+
+Legge di continuità della corrente elettrica $\text{div}\vec{J} =-\frac{\partial \rho _{l}}{\partial t}$
+
+Regime stazionario $\text{div}\vec{J} =0$
+
+Leggi di Kirchhoff $\sum _{i} I_{i} =0,\ \ \sum _{i} \Delta V_{i} =0$
+
+Legge di Ohm $\Delta V=RI$
+
+Legge di Ohm in forma locale $\vec{E} =\rho \vec{J} \ \ \ \ \vec{J} =\sigma \vec{E}$
+
+Resistenza di un conduttore ohmico di forma generica $R=\int ^{B}_{A}\frac{\rho dl}{S}$
+\begin{itemize}
+\item Resistori in serie $R_{eq} =\sum ^{N}_{i} R_{i}$
+\item Resistori in parallelo $\frac{1}{R_{eq}} =\sum ^{N}_{i}\frac{1}{R_{i}}$
+\end{itemize}
+
+Potenza dissipata $W=\frac{d\mathcal{L}}{dt} =\frac{dQ\ \Delta V}{dt} =I\cdot \Delta V$, nel caso di conduttori ohmici $W=\frac{\Delta V^{2}}{R} =RI^{2}$ (Legge di Joule)
+
+Potenza dissipata per unità di volume $w=\frac{dW^{(d\tau )}}{d\tau } =\vec{E} \cdot \vec{J}$
+
+Generatore a circuito aperto $V_{A} -V_{B} =fem$
+
+Generatore a circuito chiuso $\Delta V=fem-rI$
+\section*{Campo Magnetostatico}
+
+III Equazione di Maxwell (anche in regime tempovariante) \\$\Phi _{\Sigma } (\vec{B} )=\int _{\Sigma }\vec{B} \cdot \vec{n} dS=\int _{\tau }\text{div}\vec{B} \ d\tau =0,\ \text{div}\vec{B} =0$
+
+Forza di Lorentz $\vec{F} =q\vec{v} \times \vec{B}$
+
+Moto di una carica in un campo magnetico uniforme $R=\frac{mv}{qB}$, $\vec{\omega } =-\frac{q\vec{B}}{m}$
+
+Forza magnetica agente su conduttori percorsi da corrente (II legge di Laplace) $d\vec{F} =I\ d\vec{l} \times \vec{B}$
+
+Momento magnetico $\vec{M} =IS\vec{n} \times \vec{B} =\vec{m} \times \vec{B}$
+
+Energia potenziale magnetostatica $U_{m} =-\vec{m} \cdot \vec{B}$
+
+Espressioni di forza, momento e lavoro tramite flusso magnetico $U_{m} =-I\cdot \Phi _{\Sigma } (\vec{B} )$, $d\mathcal{L} =I\ d\Phi $, $\vec{R} =\vec{\nabla } (I\ \Phi (\vec{B} ))$
+
+Campo magnetico prodotto da un circuito percorso da corrente (I legge di Laplace) $d\vec{B} (P)=\frac{\mu _{0}}{4\pi }\frac{I\ d\vec{l} \times \vec{u}_{r}}{r^{2}}$
+
+Legge di Biot-Savart (campo magnetico prodotto da un filo rettilineo infinito) $\vec{B} (P)=\frac{\mu _{0} I}{2\pi R}\vec{u}_{\varphi }$
+
+Legge di Ampére $\oint _{\gamma }\vec{B} \cdot d\vec{l} =\mu _{0} I^{\text{concatenata a} \gamma }_{\text{tot}}$
+
+IV Equazione di Maxwell (solo in regime stazionario) $\text{rot}\vec{B} =\mu _{0}\vec{J}$
+
+Densità di corrente superficiale $j_{s} =\frac{di}{dl}$
+
+Condizioni al contorno di B: $B_{1n} =B_{2n}$, $B_{1t} -B_{2t} =\mu _{0} \ j_{s}$
+
+Potenziale magnetico vettore $\vec{B} =\text{rot}\vec{A} ,\ \nabla ^{2}\vec{A} =-\mu _{0}\vec{J}$
+
+Permeabilità magnetica relativa del materiale $\frac{B}{B_{0}} =\mu _{r}$
+
+Suscettività magnetica relativa del materiale $\chi _{m} =\mu _{r} -1$
+
+Vettore magnetizzazione $\vec{M} (P)=\lim _{\Delta \tau \rightarrow 0}\frac{\Delta \vec{m}}{\Delta \tau }$
+
+Densità di corrente di magnetizzazione \\$\vec{j}_{sm} =\vec{M} \times \vec{n}$, $\vec{J}_{m} =\text{rot}\vec{M}$
+
+Vettore campo magnetico H \\$\vec{H} =\frac{\vec{B}}{\mu _{0}} -\vec{M}$, \ $\vec{M} =\chi _{m}\vec{H} =(\mu _{r} -1)\vec{H}$, \ $\vec{B} =\mu _{0} \mu _{r}\vec{H}$
+
+Condizioni al contorno per B e H: \\$B_{1n} =B_{2n} ,\ \ \mu _{r1} H_{1n} =\mu _{r2} H_{2n} ,\\ \ H_{1t} -H_{2t} =j^{\text{cond.}} ,\ \ \frac{B_{1t}}{\mu _{r1}} -\frac{B_{2t}}{\mu _{r2}} =\mu _{0} \ j^{\text{cond.}}$
+\section*{Campi elettrici e magnetici lentamente variabili}
+
+Legge di Faraday-Neumann $f_{i} =-\frac{d\Phi _{\Sigma } (\vec{B} )}{dt}$
+
+II Equazione di Maxwell (in regime tempovariante) $\text{rot}\vec{E} =-\frac{\partial \vec{B}}{\partial t}$
+
+Energia magnetica \\$U_{m} =\frac{1}{2} L\ I^{2} =\frac{1}{2} (\mu _{0} n^{2}_{s} S\ l)\ I^{2}$, $u_{m} =\frac{1}{2}\frac{B^{2}}{\mu _{0}}$
+
+Densità di corrente di spostamento $\vec{J}_{s} =\frac{\partial \vec{D}}{\partial t}$
+
+IV Equazione di Maxwell (in regime tempovariante) $\text{rot}\vec{B} =\mu _{0}\left(\vec{J}_{c} +\frac{\partial \vec{D}}{\partial t}\right)$
+
+In presenza di dielettrici $\text{rot}\vec{H} =\vec{J}_{c} +\frac{\partial \vec{D}}{\partial t}$
+\section*{Onde elettromagnetiche}
+
+Equazione delle onde $\frac{\partial ^{2} \xi }{\partial x^{2}} -\frac{1}{v^{2}}\frac{\partial ^{2} \xi }{\partial t^{2}} =0$
+
+Funzione d'onda $\xi (x,t)=\xi _{0}\sin [k(x-vt)]=\xi _{0}\sin [kx-\omega t]$
+
+Lunghezza d'onda $\lambda =\frac{2\pi }{k}$
+
+Periodo $T=\frac{2\pi }{\omega }$
+
+Frequenza $\nu =\frac{1}{T} =\frac{\omega }{2\pi } =\frac{kv}{2\pi } =\frac{v}{\lambda } \Longrightarrow v=\lambda \nu ,\lambda =vT$
+
+Onde elettromagnetiche \\$\nabla ^{2}\vec{E} =\mu _{0} \varepsilon _{0}\frac{\partial ^{2}\vec{E}}{\partial t^{2}} ,\ \ \nabla ^{2}\vec{B} =\mu _{0} \varepsilon _{0}\frac{\partial ^{2}\vec{B}}{\partial t^{2}}$
+
+Operatore d’alembertiano \\$\Box =\nabla ^{2} -\frac{1}{c^{2}}\frac{\partial ^{2}}{\partial t^{2}} \Longrightarrow \Box \vec{E} =0,\Box \vec{B} =0$
+
+$\vec{E} =\vec{B} \times \vec{v}$
+
+Densità di energia $u=u_{e} +u_{m} =2u_{m} =2u_{e}$
+
+Energia elettromagnetica \\$U=\int _{\tau } (u_{e} +u_{m} )d\tau =\int _{\tau }\left[\frac{1}{2}\vec{D} \cdot \vec{E} +\frac{1}{2}\vec{B} \cdot \vec{H}\right] d\tau $
+
+Vettore di Poynting $\vec{S} =\vec{E} \times \vec{H}$
+
+Scambio di energia \\$\frac{dU}{dt} =-\int _{\Sigma }\vec{S} \cdot \vec{n} \ dS-\int _{\tau } \rho J^{2} \ d\tau -\int _{\tau }\vec{J} \cdot \vec{E}_{m} \ d\tau $
+
+Vettore di Poynting di un'onda piana armonica polarizzata rettilinearmente $\vec{S} =u\ \vec{v} =\frac{B^{2}}{\mu _{0} \mu _{r}}\vec{v} =\varepsilon _{0} \varepsilon _{r} E^{2}\vec{v}$
+
+Propagazione di onde nei mezzi $\frac{1}{v^{2}} =\mu _{0} \varepsilon _{0} \mu _{r} \varepsilon _{r} =\frac{\mu _{r} \varepsilon _{r}}{c^{2}} \Rightarrow v=\frac{c}{\sqrt{\mu _{r} \varepsilon _{r}}} ,k=\frac{n\omega }{c} =\frac{\omega }{c}\sqrt{\mu _{r} \varepsilon _{r}}$
+
+Equazioni di Maxwell in presenza di sorgenti \\$\vec{B} =\vec{\nabla } \times \vec{A} ,\ \ \vec{E} =-\vec{\nabla } V-\frac{\partial \vec{A}}{\partial t} ,\\\ \ \nabla ^{2}\vec{A} -\frac{1}{c^{2}}\frac{\partial ^{2}\vec{A}}{\partial t^{2}} =-\mu _{0}\vec{J} (t),\ \ \nabla ^{2} V-\frac{1}{c^{2}}\frac{\partial ^{2} V}{\partial t^{2}} =-\frac{\rho (t)}{\varepsilon _{0}}$
+\section*{Ottica}
+
+Legge di Snell $\vartheta _{i} =\vartheta _{r} ,\ \ n_{1}\sin \vartheta _{i} =n_{2}\sin \vartheta _{r}$
+
+Angolo limite $\vartheta _{i} =\arcsin\left(\frac{n_{2}}{n_{1}}\right)$
+
+Formule di Fresnel
+\begin{itemize}
+\item Caso TM. \\$\frac{E_{r}}{E_{i}} =\frac{n_{2}\cos \vartheta _{i} -n_{1}\cos \vartheta _{t}}{n_{2}\cos \vartheta _{i} +n_{1}\cos \vartheta _{t}} \ \ \ \ \frac{E_{t}}{E_{i}} =\frac{2n_{1}\cos \vartheta _{i}}{n_{1}\cos \vartheta _{t} +n_{2}\cos \vartheta _{i}}$
+\item Caso TE. \\$\frac{E_{r}}{E_{i}} =\frac{n_{1}\cos \vartheta _{i} -n_{2}\cos \vartheta _{t}}{n_{1}\cos \vartheta _{i} +n_{2}\cos \vartheta _{t}} \ \ \ \ \frac{E_{t}}{E_{i}} =\frac{2n_{1}\cos \vartheta _{i}}{n_{1}\cos \vartheta _{i} +n_{2}\cos \vartheta _{t}}$
+\end{itemize}
+
+Incidenza normale alla superficie di separazione \\$r=\frac{E_{r}}{E_{i}} =\frac{n_{1} -n_{2}}{n_{1} +n_{2}} \ \ \ \ t=\frac{E_{t}}{E_{i}} =\frac{2n_{1}}{n_{1} +n_{2}}$
+
+Interferenza, intensità media \\$I_{m} =I_{m1} +I_{m2} +2\sqrt{I_{m1} I_{m2}}\cos (\Delta \Phi )$
+
+Sorgenti uguali \\$I=I_{0} +I_{0} +2\sqrt{I^{2}_{0}}\cos[ \Delta \Phi (\vec{r} )] =2I_{0}[ 1+\cos \Delta \Phi (\vec{r} )]$
+\begin{itemize}
+\item interferenza costruttiva \\$\Delta \Phi =2\pi m\ \ \ \ m=0,\pm 1,\pm 2\dotsc $
+
+caso di sorgenti puntiformi $r_{1} -r_{2} =m\lambda $
+
+massimi di interferenza $\sin \vartheta =m\frac{\lambda }{D}$
+\item interferenza distruttiva \\$\Delta \Phi =(2m+1)\pi \ \ \ \ m=0,\pm 1,\pm 2\dotsc $
+\end{itemize}
+
+Inferenza in lamine sottili di materiale dielettrico, interferenza costruttiva $\lambda =\frac{4nd}{2m+1}$
+
+Diffrazione ad una fenditura rettilinea $I_{m} (P)=I_{0}\frac{\sin^{2} \alpha }{\alpha ^{2}}$
+
+Diffrazione ad un foro circolare, angolo minimo di risoluzione $\alpha _{\text{min}} =1.22\ \frac{\lambda }{d}$ (criterio di Rayleigh)
+
+Reticolo di diffrazione \\$I=4I_{0}\frac{\sin^{2} \alpha }{\alpha ^{2}}\cos^{2} \beta ,\ \ \alpha =\frac{kd\sin \vartheta }{2} \ \ \ \ \beta =\frac{kD\sin \vartheta }{2}$
+\section*{Richiami}
+
+Teorema della divergenza \\$\Phi _{\Sigma } (\vec{v} )=\int _{\Sigma }\vec{v} \cdot \vec{n} dS=\int _{\tau } (\text{div}\vec{v} )d\tau $
+
+Teorema di Stokes $\oint _{\gamma }\vec{v} \cdot d\vec{l} =\int _{\Sigma } (\text{rot}\vec{v} )\cdot \vec{n} dS$
+
+Nabla $\vec{\nabla } =\vec{u}_{x}\frac{\partial }{\partial x} +\vec{u}_{y}\frac{\partial }{\partial y} +\vec{u}_{z}\frac{\partial }{\partial z}$
+
+Divergenza $\text{div}\vec{v} =\vec{\nabla } \cdot \vec{v} =\frac{\partial v_{x}}{\partial x} +\frac{\partial v_{y}}{\partial y} +\frac{\partial v_{z}}{\partial z}$
+
+Rotore $\text{rot}\vec{v} =\vec{\nabla } \times \vec{v} =\left(\frac{\partial v_{z}}{\partial y} -\frac{\partial v_{y}}{\partial z} ,\frac{\partial v_{x}}{\partial z} -\frac{\partial v_{z}}{\partial x} ,\frac{\partial v_{y}}{\partial x} -\frac{\partial v_{x}}{\partial y}\right)$
+
+Flusso di un campo vettoriale $d\Phi (\vec{v} )=\vec{v} (P)\cdot \vec{n} \ dS$
+
+Angolo nello spazio $\Omega =\frac{A}{r^{2}}$
+
+\end{multicols}
+
+\end{document}
