@@ -1,0 +1,86 @@
+\documentclass[10pt,a4paper]{book}
+
+\input{style}
+
+% adding space after section numbers in TOC
+% \makeatletter
+% \renewcommand{\l@section}{\@dottedtocline{1}{1.5em}{2.6em}}
+% \renewcommand{\l@subsection}{\@dottedtocline{2}{4.0em}{3.6em}}
+% \renewcommand{\l@subsubsection}{\@dottedtocline{3}{7.4em}{4.5em}}
+% \makeatother
+
+\begin{document}
+
+\frontmatter
+
+\pagestyle{empty}
+
+% COPERTINA
+
+\hypertarget{mytitlepage}{} % set the hypertarget
+\bookmark[dest=mytitlepage,level=chapter]{Title Page} % add the bookmark
+
+\vspace*{\fill}
+
+\begin{center}
+	{\large \textsc{Appunti di}}\\
+	\vspace*{0.4cm}
+	{\Huge \textsc{Fisica Sperimentale 2}}\\
+	\vspace*{0.4cm}
+	{\large per il corso di Ingegneria Matematica}\\
+	\vspace*{0.1cm}
+	{\large {di Teo Bucci e Giulia Di Giusto}}\\
+	\vspace*{1cm}
+	Politecnico di Milano\\
+	A.A. 2019/2020
+\end{center}
+\vspace*{\fill}
+\clearpage
+
+% COPYRIGHT PAGE
+
+\hypertarget{mycopyright}{} % set the hypertarget
+\bookmark[dest=mycopyright,level=chapter]{Copyright Page} % add the bookmark
+\input{firstpages/copyright}
+\clearpage
+
+% PREFAZIONE
+
+\hypertarget{mypreface}{} % set the hypertarget
+\bookmark[dest=mypreface,level=chapter]{Prefazione} % add the bookmark
+\input{firstpages/prefazione}
+\clearpage
+
+% INDICE
+
+\cleardoublepage
+\pagestyle{toc}
+\hypertarget{mytoc}{} % set the hypertarget
+\bookmark[dest=mytoc,level=chapter]{\contentsname} % add the bookmark
+\tableofcontents
+\cleardoublepage
+
+% MAIN MATTER
+
+\pagestyle{fancy}
+\mainmatter
+
+\input{chapters/01-campo-elettrico} \cleardoublepage
+\input{chapters/02-corrente-nei-conduttori} \cleardoublepage
+\input{chapters/03-campo-magnetostatico} \cleardoublepage
+\input{chapters/04-campi-lentamente-variabili} \cleardoublepage
+\input{chapters/05-onde-elettromagnetiche} \cleardoublepage
+\input{chapters/06-ottica} \cleardoublepage
+
+% APPENDICE
+
+\appendix
+
+\begin{appendices}
+\input{chapters/A1-costanti-unita-misura} \cleardoublepage
+\input{chapters/A2-trigonometria} \cleardoublepage
+\input{chapters/A3-calcolo-differenziale-integrale} \cleardoublepage
+\input{chapters/A4-identita-vettoriali} \cleardoublepage
+\end{appendices}
+
+\end{document}
