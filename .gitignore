@@ -255,3 +255,4 @@ TSWLatexianTemp*
 *.sta
 formulario.pdf
 main.pdf
+*.DS_Store
