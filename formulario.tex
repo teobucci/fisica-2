@@ -1,6 +1,7 @@
 \documentclass[10pt,a4paper]{article}
 
-\usepackage{amsfonts,amsmath}
+\usepackage{amsfonts}
+\usepackage{amsmath}
 
 \usepackage{multicol}
 \setlength{\columnsep}{1cm}
@@ -12,23 +13,21 @@
 \usepackage[none]{hyphenat}
 
 % PARAGRAFI, INTERLINEA E MARGINE
-\emergencystretch 3em % PER EVITARE CHE IL TESTO VADA OLTRE I MARGINI
-\parindent 0ex % TOGLIE INTENDAMENTO PARAGRAFI
-% \setlength{\parindent}{4em} % CAMBIA INDENTAMENTO PARAGRAFI
-\setlength{\parskip}{0.2em} % CAMBIA SPAZIO TRA PARAGRAFI (POSSO METTERE ANCHE 1em)
-% \renewcommand{\baselinestretch}{1.5} % CAMBIA INTERLINEA
+\emergencystretch 3em % per evitare che il testo vada oltre i margini
+\parindent 0ex % toglie intendamento paragrafi
+\setlength{\parskip}{0.2em} % cambia spazio tra paragrafi
 
 \usepackage[
 	left=1.2cm,
 	right=1.2cm,
 	top=2cm,
-	bottom=1cm
-]{geometry} % CAMBIA MARGINE DEL DOCUMENTO
+	bottom=1cm,
+]{geometry}
 
 % HEADER
 \usepackage{fancyhdr}
-\fancyhead{} % PULISCI HEADER
-\fancyfoot{} % PULISCI FOOTER
+\fancyhead{}
+\fancyfoot{}
 \fancyhead[L]{\small{\textsc{Formulario di Fisica Sperimentale 2}}}
 \fancyhead[R]{\small{\textsc{Copyright Teo Bucci}}}
 
@@ -224,7 +223,7 @@ Frequenza $\nu =\frac{1}{T} =\frac{\omega }{2\pi } =\frac{kv}{2\pi } =\frac{v}{\
 
 Onde elettromagnetiche \\$\nabla ^{2}\vec{E} =\mu _{0} \varepsilon _{0}\frac{\partial ^{2}\vec{E}}{\partial t^{2}} ,\ \ \nabla ^{2}\vec{B} =\mu _{0} \varepsilon _{0}\frac{\partial ^{2}\vec{B}}{\partial t^{2}}$
 
-Operatore d’alembertiano \\$\Box =\nabla ^{2} -\frac{1}{c^{2}}\frac{\partial ^{2}}{\partial t^{2}} \Longrightarrow \Box \vec{E} =0,\Box \vec{B} =0$
+Operatore d'alembertiano \\$\Box =\nabla ^{2} -\frac{1}{c^{2}}\frac{\partial ^{2}}{\partial t^{2}} \Longrightarrow \Box \vec{E} =0,\Box \vec{B} =0$
 
 $\vec{E} =\vec{B} \times \vec{v}$
 
